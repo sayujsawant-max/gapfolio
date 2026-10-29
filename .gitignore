@@ -12,3 +12,4 @@ gapfolio-ui/dist/
 # personal coursework files, not part of the project
 reports/
 .claude/
+.local_model/

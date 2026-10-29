@@ -1,7 +1,7 @@
-"""Stage 3 behaviour: layout detection, grounding, ranking, tagging, segmentation.
+﻿"""Stage 3 behaviour: layout detection, grounding, ranking, tagging, segmentation.
 
 Runs on the offline hash provider except where a test says it needs the real
-model, in which case it is skipped when sentence-transformers is not installed.
+model (via ONNX Runtime), in which case it is skipped when the model is unavailable.
 """
 import io
 import os
@@ -47,6 +47,18 @@ def _pdf(kind):
             p.set_xy(75, 20 + i * 8); p.cell(125, 6, line[:70])
     return bytes(p.output())
 
+
+def _use_real_model(monkeypatch):
+    """Switch to the real embedding model for one test, or skip it."""
+    pytest.importorskip("onnxruntime")
+    from app.config import settings
+    from app.services import embeddings
+
+    monkeypatch.setattr(settings, "embedding_provider", "onnx")
+    monkeypatch.setattr(settings, "embedding_dim", 384)
+    monkeypatch.setattr(embeddings, "_onnx_failed", False)
+    if embeddings.effective_provider() != "onnx":
+        pytest.skip("ONNX embedding model not available")
 
 # --- column detection -----------------------------------------------------
 
@@ -210,11 +222,7 @@ def test_ats_checks_carry_a_group():
 # --- segmentation fallback (needs the real model) -------------------------
 
 def test_renamed_headings_are_classified_with_the_real_model(monkeypatch):
-    pytest.importorskip("sentence_transformers")
-    from app.config import settings
-
-    monkeypatch.setattr(settings, "embedding_provider", "sbert")
-    monkeypatch.setattr(settings, "embedding_dim", 384)
+    _use_real_model(monkeypatch)
     entities._descriptor_cache.clear()
     text = ("ARJUN RAO\narjun@example.edu | +91 98765 43210\n"
             "Where I Studied\nB.Tech Computer Science, 2027, CGPA 8.1\n"
@@ -231,18 +239,15 @@ def test_sbert_matcher_agrees_with_human_labels(monkeypatch):
     """Regression guard for the shipped configuration: the real model, with the
     thresholds in matching._FITTED, against all 76 labelled cases. Falls below
     the bar and the build fails before anyone sees a worse report."""
-    pytest.importorskip("sentence_transformers")
+    _use_real_model(monkeypatch)
     import json
     import pathlib
 
-    from app.config import settings
     from app.db import SessionLocal, init_db
     from app.services import vectorstore
     from app.services.embeddings import cosine, embed_one
 
-    monkeypatch.setattr(settings, "embedding_provider", "sbert")
-    monkeypatch.setattr(settings, "embedding_dim", 384)
-    dense_w, proven_t, partial_t = matching._FITTED["sbert"]
+    dense_w, proven_t, partial_t = matching._FITTED["onnx"]
 
     data = json.loads((pathlib.Path(__file__).parent / "fixtures" / "labeled_pairs.json").read_text(encoding="utf-8"))
     init_db()

@@ -1,4 +1,4 @@
-"""Fit the matcher's thresholds to labeled data instead of picking them by eye,
+﻿"""Fit the matcher's thresholds to labeled data instead of picking them by eye,
 and report how well the fit generalises.
 
 Sweeps the dense/lexical blend weight and the two decision thresholds over the
@@ -32,7 +32,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--provider", default="hash", help="hash | sbert | voyage | openai")
+parser.add_argument("--provider", default="hash", help="hash | onnx | sbert | voyage | openai")
 parser.add_argument("--verbose", action="store_true", help="list every held-out disagreement")
 args = parser.parse_args()
 

@@ -51,6 +51,7 @@ ENGINE_VERSION = "v3-sbert-hybrid"
 # `tune_thresholds.py --provider <name>` has been run for them.
 _FITTED = {
     "sbert": (0.7, 0.34, 0.32),
+    "onnx": (0.7, 0.34, 0.32),   # same weights as sbert, run through ONNX Runtime
     "hash": (0.7, 0.14, 0.12),
 }
 DENSE_W, PROVEN_T, PARTIAL_T = _FITTED.get(settings.embedding_provider, _FITTED["sbert"])

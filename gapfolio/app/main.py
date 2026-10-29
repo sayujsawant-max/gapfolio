@@ -1,4 +1,4 @@
-import pathlib
+﻿import pathlib
 import threading
 import time
 from collections import defaultdict, deque
@@ -90,11 +90,11 @@ def startup() -> None:
 def health():
     from .services import embeddings
 
-    ready = embeddings._sbert is not None or embeddings._sbert_failed or settings.embedding_provider != "sbert"
+    ready = embeddings._sbert is not None or embeddings._onnx is not None or embeddings._sbert_failed or embeddings._onnx_failed or settings.embedding_provider not in ("sbert", "onnx")
     return {
         "status": "ok",
         "database": "postgres+pgvector" if is_postgres() else "sqlite (dev)",
-        "embeddings": effective_provider() if ready else "sbert (loading)",
+        "embeddings": effective_provider() if ready else "model (loading)",
         "llm": "configured" if settings.anthropic_api_key else "fallback heuristics",
         "policy_version": settings.consent_version,
     }

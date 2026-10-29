@@ -21,13 +21,17 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     anthropic_model: str = "claude-sonnet-4-6"
 
-    # sbert | voyage | openai | hash
-    #   sbert = Sentence-Transformers model running locally, no key, no per-call cost
+    # onnx | sbert | voyage | openai | hash
+    #   onnx  = the MiniLM model via ONNX Runtime: ~170 MB, no PyTorch (default)
+    #   sbert = the same model via Sentence-Transformers/PyTorch: ~590 MB
     #   hash  = deterministic offline stub, tests only
-    embedding_provider: str = "sbert"
+    embedding_provider: str = "onnx"
     embedding_api_key: str = ""
     embedding_model: str = "voyage-3"          # remote providers only
     sbert_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    # Folder holding model.onnx and tokenizer.json. Empty = fetch from the
+    # Hugging Face hub (cached after the first download).
+    onnx_dir: str = ""
     embedding_dim: int = 384                   # 384 for the default SBERT model
 
     # Placement-officer accounts can only be created with this code. Empty

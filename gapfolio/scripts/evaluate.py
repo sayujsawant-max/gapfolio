@@ -1,4 +1,4 @@
-"""Measure the Stage 1 evaluation targets and print one report.
+﻿"""Measure the Stage 1 evaluation targets and print one report.
 
     python scripts/evaluate.py
 
@@ -31,7 +31,7 @@ warnings.filterwarnings("ignore")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 os.environ["GAPFOLIO_DATABASE_URL"] = f"sqlite:///{tempfile.mkdtemp()}/eval.db"
-os.environ.setdefault("GAPFOLIO_EMBEDDING_PROVIDER", "sbert")
+os.environ.setdefault("GAPFOLIO_EMBEDDING_PROVIDER", "onnx")
 os.environ.setdefault("GAPFOLIO_EMBEDDING_DIM", "384")
 os.environ["GAPFOLIO_ANTHROPIC_API_KEY"] = ""
 

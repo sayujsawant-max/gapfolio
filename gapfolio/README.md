@@ -1,4 +1,4 @@
-# GapFolio API
+﻿# GapFolio API
 
 Backend for resume-to-job-description gap analysis: server-side document
 parsing, hybrid semantic matching over pgvector, saved reports with progress
@@ -24,11 +24,13 @@ python scripts/migrate.py
 uvicorn app.main:app --reload
 ```
 
-Embeddings come from a local Sentence-Transformers model
-(`all-MiniLM-L6-v2`, 384-d): no API key, no per-call cost. Install CPU PyTorch
-first (`pip install torch --index-url https://download.pytorch.org/whl/cpu`);
-the model downloads on first use (~90 MB). With no other configuration it runs
-on SQLite and uses rule-based text for the roadmap, so a local demo needs no
+Embeddings come from a local copy of the all-MiniLM-L6-v2 model (384-d) run through
+ONNX Runtime: no API key, no per-call cost, and about 170 MB of memory, so the
+whole service fits a 512 MB host. (Set `GAPFOLIO_EMBEDDING_PROVIDER=sbert` and
+install torch + sentence-transformers to run the identical weights through
+PyTorch instead; that needs ~590 MB.) The ONNX file downloads on first use, or
+sits in the folder named by `GAPFOLIO_ONNX_DIR`. With no other configuration it
+runs on SQLite and uses rule-based text for the roadmap, so a local demo needs no
 keys. Set `GAPFOLIO_ANTHROPIC_API_KEY` to have Claude write the roadmap text;
 scoring never depends on it. `GET /api/health` reports which mode you are in,
 and `pytest` runs on the offline `hash` stub so it needs no model.
@@ -121,7 +123,7 @@ cross-validation. Thresholds are per embedding provider, because cosine
 similarity has a different scale for every model (`_FITTED` in
 `services/matching.py`).
 
-With SBERT: **90.4% agreement on the 52 held-out cases** (1.9% false-missing)
+With the MiniLM model (identical figures through ONNX Runtime and PyTorch): **90.4% agreement on the 52 held-out cases** (1.9% false-missing)
 when fitted on the 24 development cases only; **90.8%** leave-one-resume-out;
 92.1% in-sample when fitted on all 76. The offline stub scores 80.8% held-out
 with 9.6% false-missing, which is why it is for tests only. The labels come from

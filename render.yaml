@@ -1,18 +1,19 @@
-# Render blueprint: New + > Blueprint, point it at the repository. Free tier works
-# for a demo, but the free instance sleeps when idle and has 512 MB RAM, which is
-# tight for the SBERT model. Use a Starter (or larger) instance for real use.
+# Render blueprint: New + > Blueprint, point it at the repository.
+# Runs on the FREE plan: the embedding model uses ~170 MB through ONNX Runtime,
+# so the service fits the 512 MB limit. Free instances sleep after 15 minutes
+# idle (the first visit then takes ~1 minute) and lose SQLite data on restart.
 services:
   - type: web
     name: gapfolio
     runtime: docker
     dockerfilePath: ./Dockerfile
-    plan: starter
+    plan: free
     healthCheckPath: /api/health
     envVars:
       - key: GAPFOLIO_SECRET_KEY
         generateValue: true
       - key: GAPFOLIO_EMBEDDING_PROVIDER
-        value: sbert
+        value: onnx
       - key: GAPFOLIO_EMBEDDING_DIM
         value: "384"
       # Optional: set to turn on Claude-written explanations and roadmap text.
