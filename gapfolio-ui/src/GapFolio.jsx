@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "recharts";
 import * as api from "./api.js";
+import { EXTRA_SAMPLES } from "./samples.js";
 
 /* ------------------------------------------------------------------ */
 /*  GapFolio — resume → job-fit gap analysis                           */
@@ -241,6 +242,13 @@ What we're looking for
 - Hands-on experience with Git and code review workflows
 - Ability to communicate technical decisions clearly in writing
 - Bonus: exposure to system design, message queues like Kafka, or Redis caching`;
+
+/* The first sample is the original frontend-heavy resume against a backend job,
+   which is also the one the static "finished report" below describes. */
+const SAMPLES = [
+  { name: "Frontend resume, backend job", resume: SAMPLE_RESUME, jd: SAMPLE_JD },
+  ...EXTRA_SAMPLES,
+];
 
 const SAMPLE_MATCH = {
   role_title: "Software Engineer I — Backend",
@@ -568,9 +576,13 @@ export default function GapFolio() {
     }
   }, [stage]);
 
+  // Each click loads the next sample, so a demo can show different roles.
+  const [sampleIdx, setSampleIdx] = useState(0);
   const loadSample = () => {
-    setResume(SAMPLE_RESUME);
-    setJd(SAMPLE_JD);
+    const pick = SAMPLES[sampleIdx];
+    setResume(pick.resume);
+    setJd(pick.jd);
+    setSampleIdx((sampleIdx + 1) % SAMPLES.length);
     setErr("");
     setMatch(null);
     setFixes(null);
@@ -780,7 +792,7 @@ export default function GapFolio() {
                 {busy ? "Analysing…" : "Run the gap analysis"}
               </button>
               <button className="gf-btn-ghost" onClick={loadSample}>
-                Load a sample resume + JD
+                Load sample {sampleIdx + 1} of {SAMPLES.length}: {SAMPLES[sampleIdx].name}
               </button>
               <button className="gf-btn-ghost" onClick={showSampleReport}>
                 See a finished report
