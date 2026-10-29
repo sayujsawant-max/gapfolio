@@ -39,5 +39,8 @@ COPY --from=ui /ui/dist /srv/gapfolio-ui/dist
 # SQLite inside the container, which is lost on redeploy: attach a volume or point
 # it at Postgres (postgresql+psycopg://...) for anything you want to keep.
 ENV GAPFOLIO_ENV=production GAPFOLIO_EMBEDDING_PROVIDER=sbert GAPFOLIO_EMBEDDING_DIM=384
+# Hosts like Hugging Face Spaces run the container as a non-root user and only
+# /tmp is writable; override GAPFOLIO_DATABASE_URL for anything you want to keep.
+ENV GAPFOLIO_DATABASE_URL=sqlite:////tmp/gapfolio.db
 EXPOSE 8000
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
