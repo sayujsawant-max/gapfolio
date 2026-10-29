@@ -1,0 +1,22 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.36
+pydantic==2.10.4
+pydantic-settings==2.7.0
+email-validator==2.2.0
+python-multipart==0.0.20
+python-jose[cryptography]==3.3.0
+bcrypt==4.2.1
+httpx==0.28.1
+numpy==2.2.0
+pdfminer.six==20240706
+pypdf==5.1.0
+python-docx==1.1.2
+psycopg[binary]==3.2.3
+pgvector==0.3.6
+# The embedding model runs locally. Install CPU-only PyTorch first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+sentence-transformers==6.2.0
+# tests
+pytest==8.3.4
+fpdf2==2.8.8

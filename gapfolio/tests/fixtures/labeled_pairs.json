@@ -1,0 +1,551 @@
+{
+  "_comment": "Hand-labeled resume/requirement pairs. Each case states what a hiring manager would say about that requirement given that resume. The first 24 cases (backend, frontend and data resumes) are the development set the thresholds were originally fitted to. The 53 cases on the devops, ml, design and fullstack resumes were written before any threshold was fitted to them and form the held-out set. All labels are from a single annotator.",
+  "resumes": {
+    "backend_fresher": "PROJECTS\nCampus Payments Service\n- Built a REST API in Express with JWT auth serving 1200 students\n- Containerised the service with Docker and deployed it through GitHub Actions\n- Wrote 40 unit tests taking coverage to 82%\nINTERNSHIP\nBackend Intern, Nexlify (May-July 2026)\n- Cut a report query from 1.4s to 90ms by adding a composite index in MySQL\nSKILLS\nPython, Java, Kubernetes, Redis, Git, Linux\n",
+    "frontend_fresher": "PROJECTS\nCanteen Ordering App\n- Built a food ordering website for the college canteen using React\n- Worked on the frontend and connected it to a database\n- Handled login and signup for users\nINTERNSHIP\nWeb Development Intern, Nexlify (May-July 2026)\n- Helped the team with website tasks\n- Fixed bugs reported by the senior developer\nSKILLS\nHTML, CSS, JavaScript, React, Python, C++, MySQL, Git\n",
+    "data_fresher": "PROJECTS\nMovie Recommendation System\n- Built a collaborative filtering recommender on 10k ratings reaching 0.89 RMSE\n- Used pandas and scikit-learn to train and evaluate the model\nEDUCATION\nB.Tech CSE 2027, CGPA 8.4\nSKILLS\nPython, SQL, Tableau, Excel, Git\n",
+    "devops_fresher": "PROJECTS\nCI Pipeline for Student Portal\n- Set up a Jenkins pipeline that builds, tests and deploys the portal on every merge, cutting release time from 2 hours to 15 minutes\n- Wrote Terraform modules to provision 3 EC2 instances and an S3 bucket\n- Configured Prometheus and Grafana dashboards tracking latency and error rate\nINTERNSHIP\nCloud Intern, Zeta Systems (Jun-Aug 2026)\n- Migrated 6 services to Docker containers on AWS ECS\n- Automated nightly database backups with a Bash script, saving 5 hours per week\nSKILLS\nLinux, Docker, Kubernetes, Ansible, Python, Git, Azure\n",
+    "ml_fresher": "PROJECTS\nSentiment Classifier for Product Reviews\n- Fine-tuned a DistilBERT model on 25k reviews reaching 91% accuracy\n- Built a preprocessing pipeline with NLTK and spaCy\nCrop Disease Detection\n- Trained a CNN in PyTorch on 12k leaf images, improving F1 from 0.71 to 0.84\n- Deployed the model behind a Flask API used in a campus demo\nINTERNSHIP\nData Science Intern, Orbit Analytics (May-Jul 2026)\n- Reduced churn model error by 12% through feature engineering in pandas and scikit-learn\n- Presented weekly findings to a team of 8\nSKILLS\nPython, SQL, PyTorch, TensorFlow, Tableau, Docker, Git\n",
+    "design_fresher": "PROJECTS\nCampus Bus Tracker Redesign\n- Redesigned the bus tracker app in Figma, cutting steps to find a route from 6 to 3\n- Ran usability tests with 14 students and fixed the 5 most reported issues\n- Built a component library of 30 reusable elements\nPortfolio Website\n- Developed a responsive portfolio in HTML, CSS and JavaScript\nINTERNSHIP\nUI Design Intern, Pixelcraft (Jun-Aug 2026)\n- Designed 12 mobile screens for a fintech onboarding flow\n- Worked with developers to ship the flow\nSKILLS\nFigma, Adobe XD, HTML, CSS, JavaScript, Photoshop, Illustrator\n",
+    "fullstack_fresher": "PROJECTS\nExpense Tracker\n- Built a full-stack app with React and Node.js serving 300 users\n- Designed a PostgreSQL schema with 8 tables and added indexes that cut dashboard load from 2s to 400ms\n- Implemented JWT authentication with refresh tokens\n- Wrote integration tests with Jest covering 70% of the API\nChat Application\n- Added real-time messaging with WebSockets\nINTERNSHIP\nSoftware Intern, Brightlane (May-Jul 2026)\n- Fixed 20 bugs and shipped 3 features in a React codebase\n- Reviewed 15 pull requests on GitHub\nSKILLS\nJavaScript, TypeScript, React, Node.js, PostgreSQL, MongoDB, Docker, AWS, Git\n"
+  },
+  "cases": [
+    {
+      "resume": "backend_fresher",
+      "label": "REST API development",
+      "quote": "Design and build REST APIs in Node.js or Python",
+      "expect": "proven",
+      "why": "Built a REST API in Express, described as an achievement"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "Docker containerisation",
+      "quote": "Containerise services with Docker and ship them",
+      "expect": "proven",
+      "why": "Explicit containerisation bullet"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "CI/CD pipelines",
+      "quote": "ship them through CI/CD pipelines",
+      "expect": "proven",
+      "why": "GitHub Actions deployment described"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "Automated testing",
+      "quote": "Write unit and integration tests with meaningful coverage",
+      "expect": "proven",
+      "why": "40 unit tests, 82% coverage"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "SQL query tuning",
+      "quote": "Write and optimise SQL queries including query tuning",
+      "expect": "proven",
+      "why": "Composite index cutting query time, in MySQL"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "Kubernetes orchestration",
+      "quote": "Deploy and manage workloads on Kubernetes",
+      "expect": "partial",
+      "why": "Kubernetes only appears in the skills list"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "Redis caching",
+      "quote": "Use Redis caching to reduce database load",
+      "expect": "partial",
+      "why": "Redis listed, never demonstrated"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "Git and code review",
+      "quote": "Hands-on experience with Git and code review workflows",
+      "expect": "partial",
+      "why": "Git listed; GitHub Actions is adjacent but not review"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "AWS services",
+      "quote": "Work with AWS services such as EC2, S3 and Lambda",
+      "expect": "missing",
+      "why": "No cloud provider anywhere"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "Salesforce administration",
+      "quote": "Administer and customise Salesforce CRM",
+      "expect": "missing",
+      "why": "Entirely unrelated domain"
+    },
+    {
+      "resume": "backend_fresher",
+      "label": "Kafka message queues",
+      "quote": "Build event pipelines with Kafka message queues",
+      "expect": "missing",
+      "why": "No queueing or streaming work"
+    },
+    {
+      "resume": "frontend_fresher",
+      "label": "React development",
+      "quote": "Build user interfaces in React",
+      "expect": "proven",
+      "why": "Built the canteen app in React"
+    },
+    {
+      "resume": "frontend_fresher",
+      "label": "Relational databases",
+      "quote": "Work with relational databases and SQL",
+      "expect": "partial",
+      "why": "MySQL listed and a vague database connection, no query work"
+    },
+    {
+      "resume": "frontend_fresher",
+      "label": "Authentication flows",
+      "quote": "Implement user authentication and session handling",
+      "expect": "proven",
+      "why": "Handled login and signup"
+    },
+    {
+      "resume": "frontend_fresher",
+      "label": "Docker containerisation",
+      "quote": "Containerise services with Docker",
+      "expect": "missing",
+      "why": "No containerisation at all"
+    },
+    {
+      "resume": "frontend_fresher",
+      "label": "Automated testing",
+      "quote": "Write unit and integration tests",
+      "expect": "missing",
+      "why": "No testing mentioned"
+    },
+    {
+      "resume": "frontend_fresher",
+      "label": "AWS deployment",
+      "quote": "Deploy services to AWS EC2 and S3",
+      "expect": "missing",
+      "why": "No cloud experience"
+    },
+    {
+      "resume": "frontend_fresher",
+      "label": "Python programming",
+      "quote": "Write backend services in Python",
+      "expect": "partial",
+      "why": "Python listed, never used in a project"
+    },
+    {
+      "resume": "data_fresher",
+      "label": "Machine learning models",
+      "quote": "Train and evaluate machine learning models",
+      "expect": "proven",
+      "why": "Collaborative filtering model with an RMSE"
+    },
+    {
+      "resume": "data_fresher",
+      "label": "Python data analysis",
+      "quote": "Analyse data using Python and pandas",
+      "expect": "proven",
+      "why": "pandas and scikit-learn used explicitly"
+    },
+    {
+      "resume": "data_fresher",
+      "label": "SQL querying",
+      "quote": "Query data warehouses using SQL",
+      "expect": "partial",
+      "why": "SQL listed, no query work described"
+    },
+    {
+      "resume": "data_fresher",
+      "label": "Deep learning",
+      "quote": "Build deep learning models in PyTorch or TensorFlow",
+      "expect": "missing",
+      "why": "No deep learning frameworks"
+    },
+    {
+      "resume": "data_fresher",
+      "label": "Data pipeline engineering",
+      "quote": "Build and maintain Airflow data pipelines",
+      "expect": "missing",
+      "why": "No pipeline or orchestration work"
+    },
+    {
+      "resume": "data_fresher",
+      "label": "Dashboarding",
+      "quote": "Build dashboards in Tableau or Power BI",
+      "expect": "partial",
+      "why": "Tableau listed only"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "CI/CD pipelines",
+      "quote": "Build and maintain CI/CD pipelines",
+      "expect": "proven",
+      "why": "Jenkins pipeline on every merge, release time cut"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Infrastructure as code",
+      "quote": "Provision infrastructure using Terraform or CloudFormation",
+      "expect": "proven",
+      "why": "Terraform modules provisioning EC2 and S3"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Monitoring and alerting",
+      "quote": "Set up monitoring and alerting with Prometheus and Grafana",
+      "expect": "proven",
+      "why": "Dashboards for latency and error rate"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Docker containers",
+      "quote": "Run containerised workloads with Docker",
+      "expect": "proven",
+      "why": "Migrated 6 services to Docker on ECS"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "AWS deployment",
+      "quote": "Deploy and operate services on AWS",
+      "expect": "proven",
+      "why": "EC2, S3 and ECS work"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Shell scripting",
+      "quote": "Automate operational tasks with shell scripts",
+      "expect": "proven",
+      "why": "Bash backup automation, hours saved"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Kubernetes orchestration",
+      "quote": "Orchestrate containers with Kubernetes",
+      "expect": "partial",
+      "why": "Kubernetes only in the skills list"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Configuration management",
+      "quote": "Manage configuration with Ansible",
+      "expect": "partial",
+      "why": "Ansible listed, never used"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Azure cloud services",
+      "quote": "Work with Azure cloud services",
+      "expect": "partial",
+      "why": "Azure listed only"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Java backend",
+      "quote": "Develop backend services in Java",
+      "expect": "missing",
+      "why": "No Java anywhere"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Security scanning",
+      "quote": "Implement vulnerability scanning and security compliance",
+      "expect": "missing",
+      "why": "No security work"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "Kafka operations",
+      "quote": "Operate Kafka clusters",
+      "expect": "missing",
+      "why": "No streaming work"
+    },
+    {
+      "resume": "devops_fresher",
+      "label": "React interfaces",
+      "quote": "Build user interfaces in React",
+      "expect": "missing",
+      "why": "No frontend work"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Natural language processing",
+      "quote": "Build natural language processing models",
+      "expect": "proven",
+      "why": "Fine-tuned DistilBERT, NLTK and spaCy pipeline"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Deep learning",
+      "quote": "Train deep learning models in PyTorch or TensorFlow",
+      "expect": "proven",
+      "why": "CNN trained in PyTorch with F1 gain"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Feature engineering",
+      "quote": "Perform feature engineering and evaluate model error",
+      "expect": "proven",
+      "why": "Churn error reduced 12% via feature engineering"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Model deployment",
+      "quote": "Deploy trained models behind an API",
+      "expect": "proven",
+      "why": "Flask API serving the CNN"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Stakeholder communication",
+      "quote": "Present findings to the team",
+      "expect": "proven",
+      "why": "Weekly presentations to a team of 8"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "SQL querying",
+      "quote": "Query large datasets using SQL",
+      "expect": "partial",
+      "why": "SQL listed, no queries described"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Tableau dashboards",
+      "quote": "Build dashboards in Tableau or Power BI",
+      "expect": "partial",
+      "why": "Tableau listed only"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Docker for ML",
+      "quote": "Containerise machine learning services with Docker",
+      "expect": "partial",
+      "why": "Docker listed only"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "ML pipeline orchestration",
+      "quote": "Operate machine learning pipelines with Airflow and MLflow",
+      "expect": "missing",
+      "why": "No orchestration"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Big data processing",
+      "quote": "Process large datasets with Spark",
+      "expect": "missing",
+      "why": "No Spark or distributed work"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "Kubernetes deployment",
+      "quote": "Deploy services on Kubernetes",
+      "expect": "missing",
+      "why": "No Kubernetes"
+    },
+    {
+      "resume": "ml_fresher",
+      "label": "A/B testing",
+      "quote": "Design and analyse A/B experiments",
+      "expect": "missing",
+      "why": "No experimentation work"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Prototyping in Figma",
+      "quote": "Create wireframes and prototypes in Figma",
+      "expect": "proven",
+      "why": "Redesigned the tracker in Figma, steps cut 6 to 3"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Usability testing",
+      "quote": "Conduct user research and usability testing",
+      "expect": "proven",
+      "why": "14 students tested, issues fixed"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Design systems",
+      "quote": "Create and maintain design systems and component libraries",
+      "expect": "proven",
+      "why": "Built a 30-element component library"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Responsive front end",
+      "quote": "Implement responsive layouts in HTML and CSS",
+      "expect": "proven",
+      "why": "Responsive portfolio in HTML, CSS, JavaScript"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Mobile interface design",
+      "quote": "Design mobile app interfaces",
+      "expect": "proven",
+      "why": "12 mobile screens for onboarding"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Working with engineers",
+      "quote": "Collaborate with engineers to ship designs",
+      "expect": "proven",
+      "why": "Worked with developers to ship the flow"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Adobe XD prototyping",
+      "quote": "Prototype interactions in Adobe XD",
+      "expect": "partial",
+      "why": "Adobe XD listed only"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Illustration assets",
+      "quote": "Create visual assets in Illustrator and Photoshop",
+      "expect": "partial",
+      "why": "Tools listed, no asset work described"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Accessibility",
+      "quote": "Apply WCAG accessibility standards",
+      "expect": "missing",
+      "why": "No accessibility work"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Motion design",
+      "quote": "Create motion graphics in After Effects",
+      "expect": "missing",
+      "why": "No motion work"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Product analytics",
+      "quote": "Use product analytics to guide design decisions",
+      "expect": "missing",
+      "why": "No analytics"
+    },
+    {
+      "resume": "design_fresher",
+      "label": "Python scripting",
+      "quote": "Write Python scripts for data work",
+      "expect": "missing",
+      "why": "No Python"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "React development",
+      "quote": "Build and ship features in React",
+      "expect": "proven",
+      "why": "Full-stack React app, features shipped in React codebase"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Node.js APIs",
+      "quote": "Design and build REST APIs in Node.js",
+      "expect": "proven",
+      "why": "Full-stack app on Node.js serving 300 users"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Relational database design",
+      "quote": "Design relational database schemas and optimise queries",
+      "expect": "proven",
+      "why": "PostgreSQL schema, indexes cut load time"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Authentication",
+      "quote": "Implement user authentication and token handling",
+      "expect": "proven",
+      "why": "JWT auth with refresh tokens"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Automated testing",
+      "quote": "Write integration tests with meaningful coverage",
+      "expect": "proven",
+      "why": "Jest tests covering 70% of the API"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Code review",
+      "quote": "Participate in code review on pull requests",
+      "expect": "proven",
+      "why": "Reviewed 15 pull requests"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Real-time features",
+      "quote": "Build real-time features such as WebSockets",
+      "expect": "proven",
+      "why": "Real-time messaging with WebSockets"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Docker",
+      "quote": "Containerise applications with Docker",
+      "expect": "partial",
+      "why": "Docker listed only"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "AWS",
+      "quote": "Deploy applications to AWS",
+      "expect": "partial",
+      "why": "AWS listed only"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "MongoDB",
+      "quote": "Model data in MongoDB",
+      "expect": "partial",
+      "why": "MongoDB listed only"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "TypeScript",
+      "quote": "Write production TypeScript",
+      "expect": "partial",
+      "why": "TypeScript listed only"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Kubernetes",
+      "quote": "Deploy workloads on Kubernetes",
+      "expect": "missing",
+      "why": "No Kubernetes"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Machine learning features",
+      "quote": "Apply machine learning to product features",
+      "expect": "missing",
+      "why": "No ML"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "Android development",
+      "quote": "Build native Android applications",
+      "expect": "missing",
+      "why": "No mobile"
+    },
+    {
+      "resume": "fullstack_fresher",
+      "label": "GraphQL",
+      "quote": "Design GraphQL APIs",
+      "expect": "missing",
+      "why": "No GraphQL"
+    }
+  ],
+  "_dev_resumes": [
+    "backend_fresher",
+    "frontend_fresher",
+    "data_fresher"
+  ]
+}

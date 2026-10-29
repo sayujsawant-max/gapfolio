@@ -1,0 +1,38 @@
+{
+  "_comment": "Gold annotations for the seven fixture resumes. 'skills' lists every tool or technology the resume names, including ones the skill vocabulary does not contain (jwt, ecs, distilbert, cnn, websockets, adobe xd, photoshop, illustrator, usability testing, feature engineering, collaborative filtering) so recall is not trivially perfect. 'headings' maps each heading used in the fixtures to its section. Single annotator.",
+  "headings": {
+    "PROJECTS": "projects",
+    "INTERNSHIP": "experience",
+    "SKILLS": "skills",
+    "EDUCATION": "education"
+  },
+  "variants": {
+    "rulebook": {
+      "PROJECTS": "Academic Projects",
+      "INTERNSHIP": "Professional Experience",
+      "SKILLS": "Technical Skills",
+      "EDUCATION": "Academic Background"
+    },
+    "creative_a": {
+      "PROJECTS": "Things I Built",
+      "INTERNSHIP": "Industry Exposure",
+      "SKILLS": "Toolbox",
+      "EDUCATION": "Where I Studied"
+    },
+    "creative_b": {
+      "PROJECTS": "What I've Made",
+      "INTERNSHIP": "Work Stints",
+      "SKILLS": "Stack I Use",
+      "EDUCATION": "My Schooling"
+    }
+  },
+  "skills": {
+    "backend_fresher": ["rest api", "express", "jwt", "docker", "github actions", "unit testing", "mysql", "python", "java", "kubernetes", "redis", "git", "linux"],
+    "frontend_fresher": ["react", "html", "css", "javascript", "python", "c++", "mysql", "git"],
+    "data_fresher": ["collaborative filtering", "pandas", "scikit-learn", "python", "sql", "tableau", "excel", "git"],
+    "devops_fresher": ["jenkins", "terraform", "ec2", "s3", "prometheus", "grafana", "docker", "aws", "ecs", "bash", "linux", "kubernetes", "ansible", "python", "git", "azure"],
+    "ml_fresher": ["distilbert", "nltk", "spacy", "cnn", "pytorch", "flask", "pandas", "scikit-learn", "feature engineering", "python", "sql", "tensorflow", "tableau", "docker", "git"],
+    "design_fresher": ["figma", "usability testing", "html", "css", "javascript", "adobe xd", "photoshop", "illustrator"],
+    "fullstack_fresher": ["react", "node.js", "postgresql", "jwt", "jest", "websockets", "javascript", "typescript", "mongodb", "docker", "aws", "git", "github"]
+  }
+}

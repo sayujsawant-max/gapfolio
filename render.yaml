@@ -1,0 +1,20 @@
+# Render blueprint: New + > Blueprint, point it at the repository. Free tier works
+# for a demo, but the free instance sleeps when idle and has 512 MB RAM, which is
+# tight for the SBERT model. Use a Starter (or larger) instance for real use.
+services:
+  - type: web
+    name: gapfolio
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: GAPFOLIO_SECRET_KEY
+        generateValue: true
+      - key: GAPFOLIO_EMBEDDING_PROVIDER
+        value: sbert
+      - key: GAPFOLIO_EMBEDDING_DIM
+        value: "384"
+      # Optional: set to turn on Claude-written explanations and roadmap text.
+      - key: GAPFOLIO_ANTHROPIC_API_KEY
+        sync: false

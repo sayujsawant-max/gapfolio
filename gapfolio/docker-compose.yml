@@ -1,0 +1,33 @@
+﻿services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: gapfolio
+      POSTGRES_PASSWORD: gapfolio
+      POSTGRES_DB: gapfolio
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gapfolio"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      GAPFOLIO_DATABASE_URL: postgresql+psycopg://gapfolio:gapfolio@db:5432/gapfolio
+      GAPFOLIO_SECRET_KEY: ${GAPFOLIO_SECRET_KEY:-dev-secret-change-me}
+      GAPFOLIO_ANTHROPIC_API_KEY: ${GAPFOLIO_ANTHROPIC_API_KEY:-}
+      GAPFOLIO_EMBEDDING_PROVIDER: ${GAPFOLIO_EMBEDDING_PROVIDER:-sbert}
+      GAPFOLIO_EMBEDDING_API_KEY: ${GAPFOLIO_EMBEDDING_API_KEY:-}
+    ports: ["8000:8000"]
+    command: >
+      sh -c "python scripts/migrate.py &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+volumes:
+  pgdata:

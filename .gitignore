@@ -1,0 +1,14 @@
+# secrets and local state
+.env
+*.db
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# node
+node_modules/
+gapfolio-ui/dist/
+# personal coursework files, not part of the project
+reports/
+.claude/
